@@ -18,4 +18,11 @@ export default class extends Base {
     loginAction() {
         return this.display();
     }
+
+    /**
+     * 注销登录
+     */
+    logoutAction() {
+        return this.redirect("/login");
+    }
 }
