@@ -4,14 +4,15 @@
 <head>
   <meta charset="UTF-8">
   <link rel="shortcut icon" href="/static/images/favicon.ico" />
+  <link rel="stylesheet" type="text/css" href="/static/font-awesome/4.5.0/css/font-awesome.min.css" />
   <title>Life is like a song</title>
   <style>
     * {
       padding: 0;
       margin: 0;
-      font-size: 16px;
+      /*font-size: 16px;*/
       line-height: 20px;
-      font-family: arial;
+      font-family: 微软雅黑;
     }
     
     a,
@@ -28,19 +29,335 @@
     .wrap {
       width: 1000px;
       margin: auto
-    }    
+    }
+    
     body {
-      background: url(/static/images/login/3.jpg) no-repeat
+      /*background: url(/static/images/login/1.jpg) no-repeat*/
+      background-color: darkgrey;
+    }
+    
+    .header {
+      width: 1100px;
+      height: 100px;
+      background-color: white;
+      margin: 0 auto;
+      margin-bottom: 15px;
+    }
+    
+    .nav {
+      width: 1100px;
+      height: 50px;
+      margin: 0 auto;
+      background-color: white;
+      border-radius: 5px;
+    }
+    
+    .nav-header {
+      float: left;
+    }
+    
+    .nav-right {
+      float: right;
+    }
+    
+    ul {
+      list-style-type: none;
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+    
+    li {
+      height: 50px;
+      line-height: 50px;
+      float: left;
+      text-align: center;
+    }
+    
+    .nav-header a {
+      padding-bottom: 13px;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+    
+    .nav-header a:hover {
+      border-bottom: 2px solid green;
+    }
+    
+    .nav-header a:visited {
+      border-bottom: 2px solid green;
+    }
+    
+    .nav-right {
+      font-size: 14px;
+    }
+    
+    .nav-right i {
+      margin-right: 3px;
+    }
+    
+    .nav-right a {
+      padding-bottom: 5px;
+      padding-left: 10px;
+      padding-right: 10px;
+      margin-left: 2px;
+      margin-right: 2px;
+      border-bottom: 3px solid cornflowerblue;
+    }
+    
+    .nav-right a:hover {
+      border-bottom: 5px solid cornflowerblue;
+    }
+    
+    .content {
+      width: 1060px;
+      margin: 0 auto;
+      height: 1200px;
+      background-color: white;
+      border-radius: 5px;
+      margin-top: 15px;
+      padding: 20px;
+    }
+    
+    .main {
+      float: left;
+      width: 800px;
+      height: 100%;
+      border-right: 1px dashed gray;
+      margin-right: 15px;
+    }
+    
+    .aside {
+      float: left;
+      /*background-color:sandybrown;*/
+      width: 240px;
+      height: 100%;
+    }
+    
+    .post-list {
+      margin-bottom: 20px;
+    }
+    
+    .post-header {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+    
+    .post-header h3 {
+      float: left;
+    }
+    
+    .post-meta {
+      margin-bottom: 10px;
+      font-size: 12px;
+    }
+    
+    .post-meta i {
+      margin-right: 3px;
+      font-size: inherit;
+    }
+    
+    .post-meta span {
+      margin-right: 10px;
+    }
+    
+    .post-picture {
+      float: left
+    }
+    
+    .post-text {
+      font-size: 14px;
+      line-height: 2;
+      font-family: 宋体;
+      float: left;
+      width: 610px;
+      margin-left: 15px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+    }
+    
+    .post-picture {
+      width: 160px;
+      height: 120px;
+      border: 1px solid gray;
+    }
+    
+    .post-picture:hover {
+      border: 1px solid green;
+    }
+    
+    .post-picture img {}
+    
+    .widget {
+      margin-bottom: 10px;
+    }
+    
+    .widget span {
+      float: left;
+      height: 23px;
+      font-size: 12px;
+      color: gray;
+      border: 1px solid gray;
+      /*border-right: 0px;*/
+      padding: 4px 10px 4px 10px;
+    }
+    
+    .search {
+      float: left;
+      border: 1px solid gray;
+      border-left: 0px;
+      height: 31px;
+      width: 205px;
+      /*padding: 4px 0px 4px 0px;*/
+    }
+    
+    .search input {
+      border: 0px;
+      width: 200px;
+      height: 30px;
+      margin: 0px;
+      outline: none;
+      margin-left: 5px;
+    }
+    /*.search input:active{
+      border: 0px;
+    }*/
+    
+    .widget h5 {
+      border: 1px solid gray;
+      padding: 4px 4px 4px 40px;
+      height: 23px;
+    }
+    
+    .widget ul {
+      width: 238px;
+      border: 1px solid gray;
+      border-top: 0px;
+      margin: 0px;
+      height: 200px;
+    }
+    
+    .number {
+      float: right;
+      margin-right: 20px;
+      color: red;
+    }
+    
+    .clearfix:after {
+      content: '.';
+      display: block;
+      clear: both;
+      height: 0;
+      overflow: hidden;
+      visibility: hidden;
+    }
+    
+    .clearfix {
+      zoom: 1
     }
   </style>
 </head>
 
 <body>
-  <header>
-  
+  <header class="header">
+    主页标题
   </header>
+  <div class="nav">
+    <div class="nav-header">
+      <ul>
+        <li><a href="#">网站首页</a></li>
+        <li><a href="#">附加功能<i class="arrow"></i></a></li>
+        <li><a href="#">文章分类</a></li>
+      </ul>
+    </div>
+    <div class="nav-right">
+      <ul>
+        <li><a href="#"><i class="fa fa-weibo"></i>微博</a></li>
+        <li><a href="#"><i class="fa fa-qq"></i>QQ</a></li>
+        <li><a href="#"><i class="fa fa-weixin"></i>微信</a></li>
+        <li><a href="#"><i class="fa fa-rss"></i>订阅</a></li>
+        <li><a href="#"><i class="fa fa-cogs"></i>背景</a></li>
+      </ul>
+    </div>
+  </div>
   <div class="content">
-    
+    <div class="main">
+      <article class="post-list">
+        <header class="post-header clearfix">
+          <h3><a href="#">标题</a></h3>
+          <div class="number">3</div>
+        </header>
+        <div class="post-meta">
+          <span><i class="fa fa-user"></i>作者</span>
+          <span><i class="fa fa-calendar"></i>日期</span>
+          <span><i class="fa fa-folder-open-o"></i>分类</span>
+          <span><i class="fa fa-eye"></i>阅读</span>
+        </div>
+        <div class="post-content">
+          <div class="clearfix">
+            <div class="post-picture">
+              <a href="#" title="标题"><img src="" style="width50px;height50px;"></a>
+            </div>
+            <div class="post-text">段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字</div>
+          </div>
+          <div>巴拉巴拉</div>
+        </div>
+      </article>
+      <article class="post-list">
+        <header class="post-header clearfix">
+          <h3><a href="#">标题</a></h3>
+          <div class="number">3</div>
+        </header>
+        <div class="post-meta">
+          <span><i class="fa fa-user"></i>作者</span>
+          <span><i class="fa fa-calendar"></i>日期</span>
+          <span><i class="fa fa-folder-open-o"></i>分类</span>
+          <span><i class="fa fa-eye"></i>阅读</span>
+        </div>
+        <div class="post-content">
+          <div class="clearfix">
+            <div class="post-picture">
+              <a href="#" title="标题"><img src="" style="width50px;height50px;"></a>
+            </div>
+            <div class="post-text">段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字段落文字</div>
+          </div>
+          <div>巴拉巴拉</div>
+        </div>
+      </article>
+    </div>
+    <div class="aside">
+      <div class="widget clearfix">
+        <span><i class="fa fa-search"></i></span>
+        <div class="search">
+          <input value="请输入文字">
+        </div>
+      </div>
+      <div class="widget">
+        tab 标签内容
+      </div>
+      <div class="widget clearfix">
+        <span><i class="fa fa-comments"></i></span>
+        <h5>最新评论</h5>
+        <ul>
+          <li>
+            <img src="" alt="">
+            <p class="name">昵称</p>
+            <p class="time">时间</p>
+            <p class="text">内容</p>
+          </li>
+        </ul>
+      </div>
+      <div class="widget clearfix">
+        <span><i class="fa fa-random"></i></span>
+        <h5>随机文章</h5>
+      </div>
+      <div class="widget clearfix">
+        <span><i class="fa fa-tags"></i></span>
+        <h5>标签</h5>
+      </div>
+    </div>
   </div>
 </body>
 
