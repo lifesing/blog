@@ -1,0 +1,61 @@
+html {
+    font-size: 100%;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -webkit-appearance: none;
+}
+
+body {
+    background: #f4f5f7;
+    background-size: cover;
+    background-attachment: fixed;
+    background-image: url(../img/2.jpg);
+    color: #000;
+    word-wrap: break-word;
+    font-size: 13px;
+    font-family: "Classic Grotesque W01", "Hiragino Sans GB", "STHeiti", "Microsoft YaHei", "WenQuanYi Micro Hei", Arial, SimSun, sans-serif;
+    cursor: url(../img/default.cur), default;
+}
+
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ul li,
+li,
+ol,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+form,
+pre,
+fieldset,
+legend,
+input,
+textarea,
+p,
+blockquote,
+th,
+td,
+hr,
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-family: "Microsoft YaHei", "微软雅黑", "Trebuchet MS", Arial, Verdana, Tahoma, sans-serif;
+}
