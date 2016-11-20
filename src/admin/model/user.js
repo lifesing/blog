@@ -17,7 +17,6 @@ export default class extends Base {
     getEncryptPassword(password) {
 
         let passwordHash = new PasswordHash();
-
         return passwordHash.hashPassword(password);
     }
 

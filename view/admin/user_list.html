@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<%include ../templates/header.html%>
+
+<body class="skin-2">
+	<%include ../templates/navbar.html%>
+		<div class="main-container ace-save-state" id="main-container">
+			<script type="text/javascript">
+				try{ace.settings.loadState('main-container')}catch(e){}
+			</script>
+			<%include ../templates/sidebar.html%>
+				<div class="main-content">
+					<div class="main-content-inner">
+						<%include ../templates/breadcrumbs.html%>
+						<div class="page-content">
+						    	<%include ../templates/ace-settings-container.html%>
+							<div class="page-header">
+								<h1>
+									用户管理
+									<small>
+									<i class="ace-icon fa fa-angle-double-right"></i>
+									用户列表
+								</small>
+								</h1>
+							</div>
+							<div class="row">
+								
+							</div>
+						</div>
+					</div>
+				</div>
+				<%include ../templates/footer.html%>
+		</div>
+		<%include ../templates/scripts.html%>
+</body>
+
+</html>v

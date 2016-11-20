@@ -13,7 +13,7 @@
 				<div class="main-content">
 					<div class="main-content-inner">
 						<%include ../templates/breadcrumbs.html%>
-						<div class="page-content">
+						<div class="page-content" id="page-content">
 							<div class="ace-settings-container" id="ace-settings-container">
 								<div class="btn btn-app btn-xs btn-warning ace-settings-btn" id="ace-settings-btn">
 									<i class="ace-icon fa fa-cog bigger-130"></i>
@@ -96,7 +96,7 @@
 										<strong class="green">
 										Ace
 										<small>(v1.4)</small>
-									</strong><a href="https://github.com/bopoda/ace">github</a> (with minified ace js/css files).
+									</strong><a href="/admin/index/pajax">github</a> (with minified ace js/css files).
 									</div>
 									<div class="row">
 										<div class="space-6"></div>
@@ -1044,6 +1044,17 @@
 		<%include ../templates/scripts.html%>
 			<!-- inline scripts related to this page -->
 			<script type="text/javascript">
+			$.pjax({
+				selector: 'a',
+				container: '#page-content', //内容替换的容器
+				show: 'fade',  //展现的动画，支持默认和fade, 可以自定义动画方式，这里为自定义的function即可。
+				cache: false,  //是否使用缓存
+				storage: false,  //是否使用本地存储
+				titleSuffix: '', //标题后缀
+				filter: function(){},
+				callback: function(){}
+           })
+
 			jQuery(function($) {
 				$('.easy-pie-chart.percentage').each(function(){
 					var $box = $(this).closest('.infobox');

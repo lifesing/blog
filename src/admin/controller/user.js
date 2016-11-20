@@ -1,32 +1,31 @@
+/*
+ * @Author: anytao 
+ * @Description: 用户管理 视图层 
+ * @Date: 2016-11-20 09:51:22 
+ * @Last Modified by: anytao
+ * @Last Modified time: 2016-11-20 09:53:43
+ */
+
 'use strict';
 
 import Base from './base.js';
 
 export default class extends Base {
+
     /**
-     * index action
+     * 用户列表页面
      * @return {Promise} []
      */
-    indexAction() {
+    listAction() {
         //auto render template file index_index.html
         return this.display();
     }
 
     /**
-     * 登录页面
+     * 用户编辑页面
      */
-    loginAction() {
+    editAction() {
         return this.display();
     }
 
-    /**
-     * 注销登录
-     */
-    logoutAction() {
-        return this.redirect("/login");
-    }
-
-    pajaxAction() {
-       return this.display();
-    }
 }
