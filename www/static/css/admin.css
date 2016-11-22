@@ -1,0 +1,14 @@
+/*.ajax-loading{
+    position: fixed;
+    top: 45%;
+    left: 45%;
+    display: block;
+    z-index: 999999;
+    width: 124px;
+    height: 124px;
+    background: url(../images/big-progress.gif) 50% 50% no-repeat;
+}*/
+
+.ui-loading{position:absolute;left:0;top:0;z-index: 9999;}
+.ui-loading .ui-loading-mask{ position:absolute;top:0;left:0;background-color: #000;opacity: .2;z-index: 1}
+.ui-loading i{height: 34px;width:34px; display: block;background: url(../images/big-progress.gif) no-repeat center center;background-size:100% 100%;position: absolute;z-index: 2}

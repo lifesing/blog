@@ -1,38 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
+<%include ../templates/header.html%>
 
-	<%include ../templates/header.html%>
-
-<body class="skin-2">
-	<%include ../templates/navbar.html%>
-		<div class="main-container ace-save-state" id="main-container">
-			<script type="text/javascript">
+	<body class="skin-2">
+		<%include ../templates/navbar.html%>
+			<div class="main-container ace-save-state" id="main-container">
+				<script type="text/javascript">
 				try{ace.settings.loadState('main-container')}catch(e){}
 			</script>
-			<%include ../templates/sidebar.html%>
-				<div class="main-content">
-					<div class="main-content-inner">
-						<%include ../templates/breadcrumbs.html%>
-						<div class="page-content">
-						    	<%include ../templates/ace-settings-container.html%>
-							<div class="page-header">
-								<h1>
-									用户管理
-									<small>
+				<%include ../templates/sidebar.html%>
+					<div class="main-content">
+						<div class="main-content-inner">
+							<%include ../templates/breadcrumbs.html%>
+								<div class="page-content">
+									<%include ../templates/ace-settings-container.html%>
+										<div class="page-header">
+											<h1>
+												用户管理
+												<small>
 									<i class="ace-icon fa fa-angle-double-right"></i>
 									用户列表
 								</small>
-								</h1>
-							</div>
-							<div class="row">
-								
-							</div>
+											</h1>
+										</div>
+										<div class="row">
+											<table id="userList" class="table table-striped table-bordered table-hover">
+											</table>
+										</div>
+								</div>
 						</div>
 					</div>
-				</div>
-				<%include ../templates/footer.html%>
-		</div>
-		<%include ../templates/scripts.html%>
-</body>
+					<%include ../templates/footer.html%>
+			</div>
+			<%include ../templates/scripts.html%>
+				<script>
+				jQuery(function($) {
+					var userTable = 
+				    $('#userList').DataTable({
+                     paging: true,
+                     searching: false,
+                     info: false,
+                     sort: false,
+					 ajax:'/admin/api/user',
+                     columns: [{
+                         data: "username",
+                         title: "用户名"
+                     }, {
+                         data: "nickname",
+                         title: "昵称"
+                     }, {
+                         data: "email",
+                         title: "邮箱地址"
+                     }, {
+                         data: "status",
+                         title: "状态",
+                     }],
+					  columnDefs: [{
+                         targets: [3],
+                         width: '80px',
+                         render: function (data, type, full, meta) {
+                             return '<span class="label label-sm label-success">有效</span>';
+                         }
+                     }]
+                 });
+				});
+		</script>
+	</body>
 
 </html>v
