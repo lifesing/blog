@@ -43,27 +43,59 @@
                      sort: false,
 					 ajax:'/admin/api/user',
                      columns: [{
+						 data:'id',
+						 title:'ID',
+						 width:'50'
+					 },{
                          data: "username",
-                         title: "用户名"
+                         title: "用户名",
+						 width:'150'
                      }, {
                          data: "nickname",
-                         title: "昵称"
+                         title: "昵称",
+						 width:'100'
                      }, {
                          data: "email",
-                         title: "邮箱地址"
+                         title: "邮箱地址",
                      }, {
+						  data: "website",
+                          title: "个人主页",
+					 },{
                          data: "status",
                          title: "状态",
-                     }],
+                     },{
+						 data:"created_at",
+						 title:'注册时间'
+					 },{
+						 data:"last_login_at",
+						 title:'最后登录时间'
+					 },{
+						 data:"id",
+						 title:'操作'
+					 }],
 					  columnDefs: [{
-                         targets: [3],
-                         width: '80px',
+                         targets: [5],
+                         width: '40px',
                          render: function (data, type, full, meta) {
                              return '<span class="label label-sm label-success">有效</span>';
                          }
-                     }]
+                     },{
+						 targets: [8],
+                         render: function (data, type, full, meta) {
+                             return '<button class="btn btn-white btn-default btn-sm" onclick="edit('+data+')"><i class="ace-icon fa fa-edit  orange"></i>编辑</button> '+
+							 '<button class="btn btn-white btn-warning btn-sm"><i class="ace-icon fa fa-trash-o red"></i>删除</button>';
+                         }
+					 }]
                  });
 				});
+            
+			/*
+			* 编辑用户
+			*/
+			function edit(userId){
+				console.log(userId);
+                location.href = '/admin/user/edit?id='+userId;
+			}
 		</script>
 	</body>
 

@@ -3,7 +3,7 @@
  * @Descrition: 用户模块 rest  api
  * @Created time: 2016-11-10 14:10:19 
  * @Last Modified by: anytao
- * @Last Modified time: 2016-11-22 19:09:26
+ * @Last Modified time: 2016-11-23 18:49:53
  */
 
 'use strict';
@@ -22,7 +22,7 @@ export default class extends Base {
         if (this.id) {
             where.id = this.id;
         }
-        this.modelInstance.field('id,username,nickname,email,type,status,created_at').where(where);
+        this.modelInstance.field('id,username,nickname,email,website,type,status,created_at,last_login_at').where(where);
         return super.getAction();
     }
 
@@ -34,14 +34,13 @@ export default class extends Base {
 
         //返回对象
         let response = {
-            success: true,
+            success: false,
             data: '',
             msg: ''
         };
         let result = {};
         let data = this.post();
-        data.status = 1;
-        data.type = 1;
+     
         result = await this.modelInstance.addUser(data, this.ip());
         if (result.type == 'add') {
             response.msg = '新增成功';
@@ -51,6 +50,14 @@ export default class extends Base {
             response.msg = '用户已存在';
         }
         return this.json(response);
+    }
+
+    /**
+     * update
+     */
+    putAction(){
+
+        
     }
 
 }

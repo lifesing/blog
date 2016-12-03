@@ -24,8 +24,9 @@
                                             </h1>
                                         </div>
                                         <div class="row">
+                                            <input id="userId" type="hidden" value="<%= id %>">
                                             <div class="col-xs-12">
-                                                <form class="form-horizontal" role="form">
+                                                <form id="userForm" class="form-horizontal" role="form">
                                                     <div class="form-group">
                                                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1">用户名： </label>
                                                         <div class="col-sm-9">
@@ -35,7 +36,7 @@
                                                     <div class="form-group">
                                                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1">昵称： </label>
                                                         <div class="col-sm-9">
-                                                            <input type="text" id="usernick" placeholder="昵称" class="edit col-xs-10 col-sm-5" />
+                                                            <input type="text" id="nickname" placeholder="昵称" class="edit col-xs-10 col-sm-5" />
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
@@ -51,9 +52,34 @@
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
+                                                        <label class="col-sm-3 control-label no-padding-right" for="type">用户组：</label>
+                                                        <div class="col-sm-9">
+                                                            <select class="edit input-medium" id="type" name="type">
+																			<option value="1">管理员</option>
+																			<option value="0">编辑</option>
+																			<option value="2">投稿者</option>
+														   </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label no-padding-right" for="status">状态：</label>
+                                                        <div class="col-sm-9">
+                                                            <select class=" edit input-medium" id="status" name="status">
+																			<option value="1">有效</option>
+																			<option value="0">禁用</option>
+																		</select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
                                                         <label class="col-sm-3 control-label no-padding-right" for="form-field-2">密码： </label>
                                                         <div class="col-sm-9">
                                                             <input type="password" id="password" placeholder="密码" class="edit col-xs-10 col-sm-5" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label no-padding-right" for="form-field-2">确认密码： </label>
+                                                        <div class="col-sm-9">
+                                                            <input type="password" id="confirmpassword" placeholder="密码" class="edit col-xs-10 col-sm-5" />
                                                         </div>
                                                     </div>
                                                     <div class="clearfix ">
@@ -110,6 +136,8 @@
 
                              if(response.success){
 
+                                 location.href = '/admin/user/list';
+
                              }else{
                                    new PNotify({
                                     title: '错误提示',
@@ -120,7 +148,32 @@
                        }
                     });
               }
-            
+
+              $(function($) { 
+
+                  $("#userForm").validate({
+                        rules: {
+                            // simple rule, converted to {required:true}
+                            username: "required"
+                        
+                        }
+                  });
+                  var id=$('#userId').val();
+                  if(id>0){
+                       $.ajax({
+                        type:'get',
+                        url:'/admin/api/user',
+                        data:{id:id},
+                        success: function(response){
+                             $('.edit').each(function(){
+                              var _this=$(this);
+                              _this.val(response.data[_this.attr('id')]);
+                            });
+                           console.log(response);
+                        }
+                      });
+                  }
+              });
             </script>
     </body>
 
