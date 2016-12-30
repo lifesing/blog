@@ -3,7 +3,7 @@
  * @Description:  文章管理api
  * @Date: 2016-12-03 18:57:52 
  * @Last Modified by: anytao
- * @Last Modified time: 2016-12-03 19:28:44
+ * @Last Modified time: 2016-12-30 16:16:09
  */
 
 'use strict';
@@ -17,7 +17,13 @@ export default class extends Base {
      */
     getAction() {
 
-
+        let where = {};
+        if (this.id) {
+            where.id = this.id;
+        }
+        
+        this.modelInstance.field().where(where);
+        return super.getAction();
     }
 
     /**
@@ -31,7 +37,7 @@ export default class extends Base {
             msg: ''
         };
 
-        let result={};
+        let result = {};
 
         let data = this.post();
 
