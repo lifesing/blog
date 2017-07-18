@@ -21,7 +21,7 @@ export default class extends Base {
         if (this.id) {
             where.id = this.id;
         }
-        
+
         this.modelInstance.field().where(where);
         return super.getAction();
     }
@@ -50,5 +50,14 @@ export default class extends Base {
         }
 
         result = await this.modelInstance.addPost(data);
+
+        if (result.type == 'add') {
+            response.msg = '新增成功';
+            response.data = result.id;
+        } else if (result.type == 'exist') {
+            response.success = false;
+            response.msg = '已存在';
+        }
+        return this.json(response);
     }
 }

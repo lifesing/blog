@@ -37,21 +37,25 @@
 																保存草稿
 																<i class="ace-icon fa fa-arrow-right icon-on-right bigger-110"></i>
 														</button>
-														<button type="button" class="btn btn-sm btn-success">
+														<button type="button" class="btn btn-sm btn-success" onclick="Save()">
 																发布文章
 																<i class="ace-icon fa fa-arrow-right icon-on-right bigger-110"></i>
 														</button>
 													</div>
 												</div>
 												<div class="row">
+													<div class="col-sm-6 form-group">
+														<label>http://anytao.net/post/</label>
+														<input type="text" id="pathname" style="width:400px;" placeholder="请输入访问地址"  /><label>.html</label>
+													</div>
+												</div>
+												<div class="row">
 													<div class="post-edit edit col-sm-8">
-														<textarea name="content" data-provide="markdown" data-iconlibrary="fa" rows="25"></textarea>
+														<textarea name="content" id="post-content" data-provide="markdown" data-iconlibrary="fa" rows="25"></textarea>
 														<br>
 														<span class="markdown-tips">文章使用 markdown 格式，格式说明请见<a href="https://guides.github.com/features/mastering-markdown/" target="_blank">这里</a></span>
 													</div>
-
 													<div class="col-sm-4">
-												
 														<label>发布日期：</label>
 														<div class="input-group col-sm-6">
 															<input class="form-control date-picker" id="id-date-picker-1" type="text" data-date-format="dd-mm-yyyy">
@@ -59,10 +63,35 @@
 																		<i class="fa fa-calendar bigger-110"></i>
 															</span>
 														</div>
-                                                        <div class="space space-8"></div>
+														<div class="space space-8"></div>
 														<label>分类：</label>
-													</div>
+														<div class="input-group col-sm-6">
+															<select id="categoryList" class="form-control" style="width: 100%;"></select>
+														</div>
+														<div class="space space-8"></div>
+														<label>标签：</label>
 
+														<div class="input-group col-sm-6">
+															<select id="tagList" multiple="multiple" class="form-control" style="width: 100%;"></select>
+														</div>
+														<div class="space space-8"></div>
+														<label>公开度：</label>
+														<div class="control-group">
+															<div class="radio">
+																<label>
+																	<input name="form-field-radio" type="radio" class="ace">
+																	<span class="lbl">公开</span>
+																</label>
+															</div>
+
+															<div class="radio">
+																<label>
+																	<input name="form-field-radio" type="radio" class="ace">
+																	<span class="lbl">不公开</span>
+																</label>
+															</div>
+														</div>
+													</div>
 												</div>
 											</div>
 										</div>
@@ -77,29 +106,74 @@
 				<script src="/static/js/markdown.min.js"></script>
 				<script src="/static/js/bootstrap-markdown.min.js"></script>
 				<script src="/static/js/bootstrap-datepicker.min.js"></script>
+				<script src="/static/js/select2.min.js"></script>
 				<script>
 					jQuery(document).ready(function ($) {
 						$('textarea[data-provide="markdown"]').each(function () {
 							var $this = $(this);
-
 							if ($this.data('markdown')) {
 								$this.data('markdown').showEditor();
 							} else $this.markdown()
-
 							$this.parent().find('.btn').addClass('btn-white');
 						})
 
 						$('.date-picker').datepicker({
-							    format:'yyyy-mm-dd',
+								format: 'yyyy-mm-dd',
 								autoclose: true,
 								todayHighlight: true
 							})
-							//show datepicker when clicking on the icon
 							.next().on(ace.click_event, function () {
 								$(this).prev().focus();
 							});
 
+						var data = [{
+							id: 0,
+							text: 'Linux'
+						}, {
+							id: 1,
+							text: 'bug'
+						}, {
+							id: 2,
+							text: '前端'
+						}, {
+							id: 3,
+							text: 'invalid'
+						}, {
+							id: 4,
+							text: 'wontfix'
+						}];
+
+						$("#categoryList").select2({
+							data: data
+						})
+
+						$("#tagList").select2({
+							data: data
+						})
 					});
+
+					function Save() {
+						var request = {};
+						var title = $('#title').val();
+						var markdown = $('#post-content').data('markdown').parseContent();
+						var content = $('#post-content').val();
+						var pathname=$('#pathname').val();
+
+						request.title = title;
+						request.markdown = markdown;
+						request.content = content;
+						request.pathname = pathname;
+						$.ajax({
+							type: "post",
+							url: "/admin/api/post",
+							data: request,
+							success: function (response) {
+
+								console.log(response);
+
+							}
+						});
+					}
 				</script>
 	</body>
 

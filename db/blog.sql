@@ -94,7 +94,7 @@ CREATE TABLE `lifesing_post_tag` (
 CREATE TABLE `lifesing_post_category` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '分类和文章关联表主键',
   `post_id` int(10) DEFAULT NULL COMMENT '文章id',
-  `categoty_id` int(10) DEFAULT NULL COMMENT '分类id',
+  `category_id` int(10) DEFAULT NULL COMMENT '分类id',
   PRIMARY KEY (`id`),
   UNIQUE KEY `post_category` (`post_id`,`categoty_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8

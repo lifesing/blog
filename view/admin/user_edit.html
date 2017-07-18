@@ -1,180 +1,148 @@
-<!DOCTYPE html>
-<html lang="en">
-<%include ../templates/header.html%>
-
-    <body class="skin-2">
-        <%include ../templates/navbar.html%>
-            <div class="main-container ace-save-state" id="main-container">
-                <script type="text/javascript">
-				try{ace.settings.loadState('main-container')}catch(e){}
-			</script>
-                <%include ../templates/sidebar.html%>
-                    <div class="main-content">
-                        <div class="main-content-inner">
-                            <%include ../templates/breadcrumbs.html%>
-                                <div class="page-content">
-                                    <%include ../templates/ace-settings-container.html%>
-                                        <div class="page-header">
-                                            <h1>
-                                                用户管理
-                                                <small>
-									<i class="ace-icon fa fa-angle-double-right"></i>
-									新增用户
-								</small>
-                                            </h1>
-                                        </div>
-                                        <div class="row">
-                                            <input id="userId" type="hidden" value="<%= id %>">
-                                            <div class="col-xs-12">
-                                                <form id="userForm" class="form-horizontal" role="form">
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1">用户名： </label>
-                                                        <div class="col-sm-9">
-                                                            <input type="text" id="username" placeholder="用户名" class="edit col-xs-10 col-sm-5" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1">昵称： </label>
-                                                        <div class="col-sm-9">
-                                                            <input type="text" id="nickname" placeholder="昵称" class="edit col-xs-10 col-sm-5" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1">电子邮箱： </label>
-                                                        <div class="col-sm-9">
-                                                            <input type="text" id="email" placeholder="邮箱地址" class="edit col-xs-10 col-sm-5" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1">个人站点： </label>
-                                                        <div class="col-sm-9">
-                                                            <input type="text" id="website" class="edit col-xs-10 col-sm-5" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label no-padding-right" for="type">用户组：</label>
-                                                        <div class="col-sm-9">
-                                                            <select class="edit input-medium" id="type" name="type">
+<div>
+    <input id="userId" type="hidden" value="<%= id %>">
+    <div class="col-xs-12">
+        <form id="userForm" class="form-horizontal" role="form">
+            <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right" for="form-field-1">用户名： </label>
+                <div class="col-sm-9">
+                    <input type="text" id="username" placeholder="用户名" class="edit col-xs-10 col-sm-5" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right" for="form-field-1">昵称： </label>
+                <div class="col-sm-9">
+                    <input type="text" id="nickname" placeholder="昵称" class="edit col-xs-10 col-sm-5" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right" for="form-field-1">电子邮箱： </label>
+                <div class="col-sm-9">
+                    <input type="text" id="email" placeholder="邮箱地址" class="edit col-xs-10 col-sm-5" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right" for="form-field-1">个人站点： </label>
+                <div class="col-sm-9">
+                    <input type="text" id="website" class="edit col-xs-10 col-sm-5" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right" for="type">用户组：</label>
+                <div class="col-sm-9">
+                    <select class="edit input-medium" id="type" name="type">
 																			<option value="1">管理员</option>
 																			<option value="0">编辑</option>
 																			<option value="2">投稿者</option>
 														   </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label no-padding-right" for="status">状态：</label>
-                                                        <div class="col-sm-9">
-                                                            <select class=" edit input-medium" id="status" name="status">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right" for="status">状态：</label>
+                <div class="col-sm-9">
+                    <select class=" edit input-medium" id="status" name="status">
 																			<option value="1">有效</option>
 																			<option value="0">禁用</option>
 																		</select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label no-padding-right" for="form-field-2">密码： </label>
-                                                        <div class="col-sm-9">
-                                                            <input type="password" id="password" placeholder="密码" class="edit col-xs-10 col-sm-5" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label no-padding-right" for="form-field-2">确认密码： </label>
-                                                        <div class="col-sm-9">
-                                                            <input type="password" id="confirmpassword" placeholder="密码" class="edit col-xs-10 col-sm-5" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="clearfix ">
-                                                        <div class="col-md-offset-3 col-md-9">
-                                                            <button class="btn btn-info" type="button" onclick="saveUser()">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right" for="form-field-2">密码： </label>
+                <div class="col-sm-9">
+                    <input type="password" id="password" placeholder="密码" class="edit col-xs-10 col-sm-5" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right" for="form-field-2">确认密码： </label>
+                <div class="col-sm-9">
+                    <input type="password" id="confirmpassword" placeholder="密码" class="edit col-xs-10 col-sm-5" />
+                </div>
+            </div>
+            <div class="clearfix ">
+                <div class="col-md-offset-3 col-md-9">
+                    <button class="btn btn-info" type="button" onclick="saveUser()">
 												<i class="ace-icon fa fa-check bigger-110"></i>
 												提交
 											</button> &nbsp; &nbsp; &nbsp;
-                                                            <button class="btn" type="reset">
+                    <button class="btn" type="reset">
 												<i class="ace-icon fa fa-undo bigger-110"></i>
 												重置
 											</button>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                </div>
-                        </div>
-                    </div>
-                    <%include ../templates/footer.html%>
+                </div>
             </div>
-            <%include ../templates/scripts.html%>
-                <script>
+        </form>
+    </div>
+</div>
 
-              function saveUser(){
+<script>
+    function saveUser() {
 
-                    var request={};
-                    $('.edit').each(function(){
-                        var _this=$(this);
-                        request[_this.attr('id')]=_this.val();
+        var request = {};
+        $('.edit').each(function () {
+            var _this = $(this);
+            request[_this.attr('id')] = _this.val();
+        });
+
+        if (request.userName == '') {
+
+            new PNotify({
+                title: '提示',
+                type: 'error',
+                text: '请输入用户名'
+            });
+            return;
+        }
+
+        var load = new Loading();
+        load.init();
+        load.start();
+
+        $.ajax({
+            type: "post",
+            url: "/admin/api/user",
+            data: request,
+            success: function (response) {
+                load.stop();
+
+                if (response.success) {
+
+                    location.href = '/admin/user/list';
+
+                } else {
+                    new PNotify({
+                        title: '错误提示',
+                        type: 'error',
+                        text: response.msg
                     });
+                }
+            }
+        });
+    }
 
-                    if(request.userName==''){
+    $(function ($) {
 
-                        new PNotify({
-                        title: '提示',
-                        type:'error',
-                        text: '请输入用户名'
-                        });
-                        return;
-                    }
+        $("#userForm").validate({
+            rules: {
+                // simple rule, converted to {required:true}
+                username: "required"
 
-                    var load = new Loading();
-                    load.init();
-                    load.start();
-
-                    $.ajax({
-                        type: "post",
-                        url: "/admin/api/user",
-                        data: request,
-                        success: function (response) {
-                             load.stop();
-
-                             if(response.success){
-
-                                 location.href = '/admin/user/list';
-
-                             }else{
-                                   new PNotify({
-                                    title: '错误提示',
-                                    type:'error',
-                                    text: response.msg
-                                    });
-                             }
-                       }
+            }
+        });
+        var id = $('#userId').val();
+        if (id > 0) {
+            $.ajax({
+                type: 'get',
+                url: '/admin/api/user',
+                data: {
+                    id: id
+                },
+                success: function (response) {
+                    $('.edit').each(function () {
+                        var _this = $(this);
+                        _this.val(response.data[_this.attr('id')]);
                     });
-              }
-
-              $(function($) { 
-
-                  $("#userForm").validate({
-                        rules: {
-                            // simple rule, converted to {required:true}
-                            username: "required"
-                        
-                        }
-                  });
-                  var id=$('#userId').val();
-                  if(id>0){
-                       $.ajax({
-                        type:'get',
-                        url:'/admin/api/user',
-                        data:{id:id},
-                        success: function(response){
-                             $('.edit').each(function(){
-                              var _this=$(this);
-                              _this.val(response.data[_this.attr('id')]);
-                            });
-                           console.log(response);
-                        }
-                      });
-                  }
-              });
-            </script>
-    </body>
-
-</html>v
+                    console.log(response);
+                }
+            });
+        }
+    });
+</script>
