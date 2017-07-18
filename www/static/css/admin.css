@@ -17,12 +17,6 @@ body{
 .ui-loading .ui-loading-mask{ position:absolute;top:0;left:0;background-color: #000;opacity: .2;z-index: 1}
 .ui-loading i{height: 34px;width:34px; display: block;background: url(../images/big-progress.gif) no-repeat center center;background-size:100% 100%;position: absolute;z-index: 2}
 
-.post-edit{
-
-    margin-top:10px;
-    padding-left:0px;
-}
-
 .post-edit .markdown-tips{
 
     font-size: 14px;
